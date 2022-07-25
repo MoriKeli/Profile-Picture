@@ -6,7 +6,8 @@ How to update profile picture using django
   - CSS
   - Bootstrap
   - Django
-  
+ 
+ #### This tutorial assumes that you know how to upload images using django forms and signals
  #### Explanation
  ##### 1. In your models.py, create a user profile model.
 
@@ -29,6 +30,9 @@ How to update profile picture using django
  ![model](https://user-images.githubusercontent.com/78599959/180755557-7febc44c-2bd2-4b24-bcca-7f5c49150370.png)
 
  #### 5. Create signals.py file in your app. Once the user creates an account, we 
- need to fill in "user = models.OneToOneField()" in model Profile with registered user's username.
+ need to fill in "user = models.OneToOneField()" in model Profile with registered user's username. Import post_save, receiver decorator and Profile model
 
 ![signal](https://user-images.githubusercontent.com/78599959/180755603-2eab5168-9cac-4491-a740-9a19e6be63d3.png)
+
+If you have followed the steps above, everything should work out.
+Happy coding...

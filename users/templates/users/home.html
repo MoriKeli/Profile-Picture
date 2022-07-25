@@ -1,0 +1,74 @@
+{% extends 'users/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+    {% block content %}
+    <style>
+        * {box-sizing: border-box;}
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            margin-top: 2%;
+        }
+        .card {
+            background-color: whitesmoke;
+            padding: 10px;
+            margin-bottom: 2%;
+        }
+        img {
+            height: 150px;
+            width: 150px;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-offset-3">
+                <div class="card card-body img-rounded">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-circle " src="{{user.profile.profile_pic.url}}" alt="">
+                        </div>
+                        <div class="col-md-4">
+                            <h1>{{user.username}}</h1>
+                            <h5>{{user.email}}</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card card-body img-rounded">
+                    <a href="{% url 'logout' %}">Logout</a>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Edit Profile</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{u_form.as_p}}
+                                {{p_form.as_p}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">Edit Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    {% endblock %}    
+</body>
+</html>
